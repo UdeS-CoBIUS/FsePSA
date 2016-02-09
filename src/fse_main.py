@@ -33,9 +33,9 @@ def build_arg_parser():
     parser.add_argument('-ge', '--gapextend', type=float, default=-0.2)
     parser.add_argument('-fso', '--fsopen', type=float, default=-10)
     parser.add_argument('-fse', '--fsextend', type=float, default=-0.5)
-    parser.add_argument('-aa', '--aminoacidmatrix', default='../resources/BLOSUM62.txt')
-    parser.add_argument('-d', '--datasequence', nargs=2, default=['../examples/example_data.fasta', 'fasta'])
-    parser.add_argument('-o', '--outfile', default='../examples/result_example_data.align')
+    parser.add_argument('-aa', '--aminoacidmatrix', default='resources/BLOSUM62.txt')
+    parser.add_argument('-d', '--datasequence', nargs=2, default=['examples/example_data.fasta', 'fasta'])
+    parser.add_argument('-o', '--outfile', default='examples/result_example_data.align')
     return parser
 
 def compute_fslength(sequence1,sequence2):
