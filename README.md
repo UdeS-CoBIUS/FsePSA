@@ -1,6 +1,6 @@
 # FsePSA
 
-FsePSA compute pairwise alignments between coding sequences.
+FsePSA compute pairwise alignments between coding sequences while accounting for the length of frameshift translations.
 
 
 ### Requirements
@@ -91,6 +91,18 @@ ATGACCGAATCCAACAGCCCTGGCATAAGTGGGGGAACGATTGAAGTAGGAACGATTTAA
 
 * *outfile* --- contains all pairwise alignments at the srspair format.
 
+#### Running FsePSA on an example
+
+To run FsePSA on the example of sequence file *example_data.fasta* given in directory *examples*,
+and using the *BLOSUM62* amino acid substitution matrix given in directory *resources*
+you can use the following command:
+
+```
+python src/fse_main.py --datasequence examples/example_data.fasta fasta \
+--gapopen -2.0 --gapextend -1.0 --fsopen -2.0 --fsextend -1.0 
+--aminoacidmatrix resources/BLOSUM62.txt \
+--outfile examples/example_data.srspair
+```
 
 
 
