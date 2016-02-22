@@ -99,7 +99,7 @@ you can use the following command:
 
 ```
 python src/fse_main.py --datasequence examples/example_data.fasta fasta \
---gapopen -2.0 --gapextend -1.0 --fsopen -2.0 --fsextend -1.0 
+--gapopen -2.0 --gapextend -1.0 --fsopen -2.0 --fsextend -1.0 \
 --aminoacidmatrix resources/BLOSUM62.txt \
 --outfile examples/example_data.srspair
 ```
