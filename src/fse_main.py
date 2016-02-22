@@ -9,7 +9,7 @@ This module allows to run a pairwise alignment algorithm on every pair of
 a set of coding sequences given in a multifasta file and write the resulting 
 alignments in a srspair alignment file. The alignment algorithm is described 
 in manuscript:
-    * F. Bélanger, A. Rachati, A. Ouangraoua. Aligning protein-coding sequences 
+    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences 
 with frameshift extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger and Aida Ouangraoua
