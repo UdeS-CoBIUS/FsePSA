@@ -15,7 +15,7 @@ FsePSA is composed of a set of Python scripts. It requires the following to be a
 ```
 src/fse_main.py [-h] [-go GAPOPEN] [-ge GAPEXTEND] [-fso FSOPEN]
                 [-fse FSEXTEND] [-aa AMINOACIDMATRIX]
-                [-d DATASEQUENCE DATAFORMAT] [-o OUTFILE]
+                [-d DATASEQUENCE DATAFORMAT] [-o OUTFILE]  [-of OUTFORMAT]
                
 ```
 
@@ -35,6 +35,8 @@ src/fse_main.py [-h] [-go GAPOPEN] [-ge GAPEXTEND] [-fso FSOPEN]
   *-d , --datasequence \<DATASEQUENCE fasta> *      sequence file in fasta format    
 
   *-o , --outfile \<OUTFILE> *      output file   
+
+  *-of , --outformat \<OUTFORMAT> *      output file format (srspair or fasta)
 
 
 #### Input files
@@ -75,7 +77,7 @@ X  0 -1 -1 -1 -2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -2  0  0 -2 -1 -1 -1 -1 -1 -4
 * -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4 -4  1 
 ```
 
-##### Sequence file in fasta format.
+##### Sequence file in multifasta format.
 
 Example:
 ```
@@ -89,14 +91,15 @@ ATGACCGAATCCAACAGCCCTGGCATAAGTGGGGGAACGATTGAAGTAGGAACGATTTAA
 
 #### Output file
 
-* *outfile* --- contains all pairwise alignments at the srspair format. The starting positions 
-of frameshift translations in the alignments are indicated with the symbol *!* in the markup line.
+* *outfile* --- contains all pairwise alignments at the srspair format or fasta format. 
+The starting positions of frameshift translations in the alignments are indicated with 
+the symbol *!* in the markup line.
 
-Example:
+Example at the srspair format:
 ```
 ########################################
 # Program: fse
-# Rundate: Mon Feb 22 15:00:09 2016
+# Rundate: Thu Apr 14 13:59:55 2016
 # Commandline: python fse_main.py
 #    --datasequence examples/example_data.fasta fasta
 #    --gapopen -2.0
@@ -205,6 +208,133 @@ Seq2             50 GAACGATTTAA     60
                     |||||||||||
 Seq3             50 GAACGATTTAA     60
 
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Score_matrix
+#
+#=======================================
+
+Seq1	Seq2	Seq3	
+62.5	47.0	
+80.5	
+
+#---------------------------------------
+#---------------------------------------
+```
+
+Example at fasta format:
+```
+########################################
+# Program: fse
+# Rundate: Thu Apr 14 14:00:08 2016
+# Commandline: python fse_main.py
+#    --datasequence examples/example_data.fasta fasta
+#    --gapopen -2.0
+#    --gapextend -1.0
+#    --fsopen -2.0
+#    --fsextend -1.0
+#    --aminoacidmatrix resources/BLOSUM62.txt
+#    --outfile examples/example_data.aln.fasta
+# Align_format: fasta
+# Report_file: examples/example_data.aln.fasta
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Seq1
+# 2: Seq2
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -2.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -2.0
+# FSextend_penalty: -1.0
+#
+# Length: 61
+# Identity:       43/61 70.5%
+# Similarity:     43/61 70.5%
+# Gaps:           17/61 27.9%
+# FSopen:         1/61 1.6%
+# FrameShift:     12/61 19.7%
+# Score: 62.5
+#
+#
+#=======================================
+
+>Seq1
+ATGACCGAATCCAAGCAGCCCTGGCATAAGTGGGGGAACGAT--------
+--------TGA
+
+>Seq2
+ATGACCGAATCCAAGCAGCCCTGGCATAA!TGGGGGAACGATTGAAGTAG
+GAACGATTTAA
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Seq1
+# 2: Seq3
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -2.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -2.0
+# FSextend_penalty: -1.0
+#
+# Length: 61
+# Identity:       43/61 70.5%
+# Similarity:     43/61 70.5%
+# Gaps:           17/61 27.9%
+# FSopen:         1/61 1.6%
+# FrameShift:     27/61 44.3%
+# Score: 47.0
+#
+#
+#=======================================
+
+>Seq1
+ATGACCGAATCCAAGCAGCCCTGGCATAAGTGGGGGAACGAT--------
+--------TGA
+
+>Seq3
+ATGACCGAATCCAA!CAGCCCTGGCATAAGTGGGGGAACGATTGAAGTAG
+GAACGATTTAA
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: Seq2
+# 2: Seq3
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -2.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -2.0
+# FSextend_penalty: -1.0
+#
+# Length: 61
+# Identity:       58/61 95.1%
+# Similarity:     58/61 95.1%
+# Gaps:           2/61 3.3%
+# FSopen:         1/61 1.6%
+# FrameShift:     12/61 19.7%
+# Score: 80.5
+#
+#
+#=======================================
+
+>Seq2
+ATGACCGAATCCAAGCAGCCCTGGCAT-AATGGGGGAACGATTGAAGTAG
+GAACGATTTAA
+
+>Seq3
+ATGACCGAATCCAA!CAGCCCTGGCATAAGTGGGGGAACGATTGAAGTAG
+GAACGATTTAA
 #---------------------------------------
 #---------------------------------------
 

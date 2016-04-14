@@ -1,6 +1,6 @@
 ########################################
 # Program: fse
-# Rundate: Mon Feb 22 12:13:40 2016
+# Rundate: Thu Apr 14 13:59:55 2016
 # Commandline: python fse_main.py
 #    --datasequence examples/example_data.fasta fasta
 #    --gapopen -2.0

@@ -9,7 +9,7 @@ This module allows to run a pairwise alignment algorithm on every pair of
 a set of coding sequences given in a multifasta file and write the resulting 
 alignments in a srspair alignment file. The alignment algorithm is described 
 in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences 
+    * F. Bélanger, A. Rachati, A. Ouangraoua. Aligning protein-coding sequences 
 with frameshift extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger and Aida Ouangraoua
@@ -32,10 +32,11 @@ def build_arg_parser():
     parser.add_argument('-go', '--gapopen', type=float, default=-10)
     parser.add_argument('-ge', '--gapextend', type=float, default=-0.2)
     parser.add_argument('-fso', '--fsopen', type=float, default=-10)
-    parser.add_argument('-fse', '--fsextend', type=float, default=-0.5)
+    parser.add_argument('-fse', '--fsextend', type=float, default=-0.2)
     parser.add_argument('-aa', '--aminoacidmatrix', default='resources/BLOSUM62.txt')
     parser.add_argument('-d', '--datasequence', nargs=2, default=['examples/example_data.fasta', 'fasta'])
-    parser.add_argument('-o', '--outfile', default='examples/result_example_data.align')
+    parser.add_argument('-o', '--outfile', default='examples/result_example_data.srspair')
+    parser.add_argument('-of', '--outformat', default='srspair')
     return parser
 
 def compute_fslength(sequence1,sequence2):
@@ -125,9 +126,11 @@ def print_alignment(total_length,total_identity,total_gap,total_fsopen,total_fse
     outputfile.write("#---------------------------------------\n")
     outputfile.write("#---------------------------------------\n")
 
-def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2):
+def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2,outformat):
     total_identity = total_fsopen = total_fsextend = total_gap1 = total_gap2 = 0
     alignment = ""
+    aln_srspair = ""
+    aln1_fasta = aln2_fasta = ""
     start = 0
     while start < len(sequence1):
         line_length = LENGTH_ALN_LINE
@@ -135,31 +138,38 @@ def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2):
             line_length = len(sequence1)-start
         subsequence1 = sequence1[start:start+line_length]
         subsequence2 = sequence2[start:start+line_length]
+        aln1_fasta += subsequence1 + "\n"
+        aln2_fasta += subsequence2 + "\n"
         nb_identity,nb_gap1,nb_gap2,markup_line,subsequence1,subsequence2 = compute_alignment_composition(subsequence1,subsequence2)
 
         prefix1 = sequence1_id
         for i in range (len(sequence1_id),20):
             prefix1 += " "
         end_prefix1 = " "+ str(start-total_gap1+1) + " "
-        prefix1 = prefix1[:20-len(end_prefix1)] + end_prefix1 
+        prefix1 = prefix1[:20-len(end_prefix1)] + end_prefix1
             
         prefix2 = sequence2_id
         for i in range (len(sequence2_id),20):
             prefix2 += " "
         end_prefix2 = " "+ str(start-total_gap2+1) + " "
-        prefix2 = prefix2[:20-len(end_prefix2)] + end_prefix2 
+        prefix2 = prefix2[:20-len(end_prefix2)] + end_prefix2
             
-        alignment +=  prefix1 + subsequence1 + "     " + str(start+line_length - total_gap1 - nb_gap1) + "\n"
+        aln_srspair +=  prefix1 + subsequence1 + "     " + str(start+line_length - total_gap1 - nb_gap1) + "\n"
         prefix_markup_line = ""
         for i in range (20):
             prefix_markup_line += " "
-        alignment +=  prefix_markup_line + markup_line + "\n"
-        alignment += prefix2 +subsequence2 + "     " + str(start+line_length - total_gap2 - nb_gap2) + "\n\n"
-        
+        aln_srspair +=  prefix_markup_line + markup_line + "\n"
+        aln_srspair += prefix2 +subsequence2 + "     " + str(start+line_length - total_gap2 - nb_gap2) + "\n\n"
+
         total_identity += nb_identity
         total_gap1 += nb_gap1
         total_gap2 += nb_gap2
         start += line_length
+
+    if(outformat == "srspair"):
+        alignment = aln_srspair
+    if(outformat == "fasta"):
+        alignment = ">" + sequence1_id + "\n" + aln1_fasta + "\n" + ">" + sequence2_id + "\n" + aln2_fasta
 
     total_length = len(sequence1)
     total_gap = total_gap1 + total_gap2
@@ -167,7 +177,7 @@ def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2):
     
 def print_result(sequence1_id,sequence2_id,score,sequence1, sequence2, arg, outputfile):
     total_fsopen, total_fsextend, sequence1, sequence2 = compute_fslength(sequence1,sequence2)
-    alignment,total_length,total_identity,total_gap = format_alignment(sequence1_id,sequence2_id,sequence1,sequence2)
+    alignment,total_length,total_identity,total_gap = format_alignment(sequence1_id,sequence2_id,sequence1,sequence2,arg.outformat)
 
     print_alignment_header(sequence1_id,sequence2_id,arg, outputfile)
     print_alignment(total_length,total_identity,total_gap,total_fsopen,total_fsextend,alignment,score,outputfile)
@@ -184,7 +194,7 @@ def print_file_header(arg, outputfile):
     outputfile.write("#    --fsextend " + str(arg.fsextend) + "\n")    
     outputfile.write("#    --aminoacidmatrix " + arg.aminoacidmatrix + "\n")  
     outputfile.write("#    --outfile " + arg.outfile + "\n")
-    outputfile.write("# Align_format: srspair\n")
+    outputfile.write("# Align_format: " + arg.outformat + "\n")
     outputfile.write("# Report_file: " + arg.outfile + "\n")
     outputfile.write("########################################\n")
 
@@ -217,6 +227,7 @@ def main():
     seq_id_table = [] 
     seq_table = []
     seq_file = arg.datasequence
+
     for record in SeqIO.parse(seq_file[0], seq_file[1]) :
         seq_id_table.append(record.id)
         seq_table.append(record.seq)
@@ -229,7 +240,7 @@ def main():
     for i in range(len(seq_table)):
         for j in range(i+1):
             score_matrix += "\t"
-        for j in range(i+1,len(seq_table)):
+        for j in range(i+1,len(seq_table)):                
             score, sequence1, sequence2 = fse(seq_table[i], seq_table[j], arg, saa, san)
             print_result(seq_id_table[i],seq_id_table[j],score,sequence1, sequence2, arg,outputfile)
             score_matrix += str(score) + "\t"
