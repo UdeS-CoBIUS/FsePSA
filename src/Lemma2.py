@@ -32,7 +32,7 @@ def lemma2(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if 2 <= i < len_a-1 and 2 <= j < len_b-1:
-            values[0] = sub_aa[aamap[seq_a[i-1:i+2]], aamap[seq_b[j-1:j+2]]]/2 + table_df[i-2, j-2] + fs_extension_cost
+            values[0] = sub_aa[aamap[str(seq_a[i-1:i+2])], aamap[str(seq_b[j-1:j+2])]]/2 + table_df[i-2, j-2] + fs_extension_cost
 
         if 2 <= i < len_a-1 and j < len_b-1:
             values[1] = sub_an[seq_a[i+1], seq_b[j+1]]/2 + sub_an[seq_a[i], seq_b[j]] + table_d[i-2, j-1] + \
@@ -54,7 +54,7 @@ def lemma2(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if 2 <= i < len_a-1 and 2 <= j < len_b-1:
-            values[0] = sub_aa[aamap[seq_a[i-1:i+2]], aamap[seq_b[j-1:j+2]]]/2 + table_df[i-2, j-2] + fs_extension_cost
+            values[0] = sub_aa[aamap[str(seq_a[i-1:i+2])], aamap[str(seq_b[j-1:j+2])]]/2 + table_df[i-2, j-2] + fs_extension_cost
 
         if 2 <= j < len_b-1 and i < len_a-1:
             values[1] = sub_an[seq_a[i+1], seq_b[j+1]]/2 + sub_an[seq_a[i], seq_b[j]] + table_d[i-1, j-2] + \
@@ -76,7 +76,7 @@ def lemma2(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if i < len_a-2 and j < len_b-2:
-            values[0] = sub_aa[aamap[seq_a[i:i+3]], aamap[seq_b[j:j+3]]]/2 + table_df[i-1, j-1] + fs_extension_cost
+            values[0] = sub_aa[aamap[str(seq_a[i:i+3])], aamap[str(seq_b[j:j+3])]]/2 + table_df[i-1, j-1] + fs_extension_cost
 
         if i < len_a-2 and j < len_b-2:
             values[1] = sub_an[seq_a[i+2], seq_b[j+2]]/2 + sub_an[seq_a[i+1], seq_b[j+1]]/2 + table_d[i-1, j] + \
@@ -92,7 +92,7 @@ def lemma2(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if i < len_a-2 and j < len_b-2:
-            values[0] = sub_aa[aamap[seq_a[i:i+3]], aamap[seq_b[j:j+3]]]/2 + table_df[i-1, j-1] + fs_extension_cost
+            values[0] = sub_aa[aamap[str(seq_a[i:i+3])], aamap[str(seq_b[j:j+3])]]/2 + table_df[i-1, j-1] + fs_extension_cost
 
         if i < len_a-2 and j < len_b-2:
             values[1] = sub_an[seq_a[i+2], seq_b[j+2]]/2 + sub_an[seq_a[i+1], seq_b[j+1]]/2 + table_d[i, j-1] + \
