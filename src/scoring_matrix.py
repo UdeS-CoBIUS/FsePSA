@@ -6,7 +6,7 @@
 ``scoring_matrix.py`` **module description**:
 
 This module implements a class for subtitution matrices used in the dynamic programming algorithm described in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences with frameshift extension penalties. (2016).
+    * F. Bélanger, A. Rachati, A. Ouangraoua. Aligning protein-coding sequences with frameshift extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger
 
@@ -32,7 +32,7 @@ class ScoringMatrix:
 
         for line in scoring_file:
             values = line.split()
-            self._scoring_matrix[i, :] = map(int, values[1:])
+            self._scoring_matrix[i, :] = map(float, values[1:])
             i += 1
 
     def _build_alphabet(self, line):
@@ -72,10 +72,10 @@ class ScoringMatrix:
     def init_similarity(self):
         self._alphabet = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
         self._scoring_matrix = np.ones((4, 4))
-        self._scoring_matrix *= -1
+        self._scoring_matrix *= -1.0
 
         for i in range(4):
-            self._scoring_matrix[i, i] = 1
+            self._scoring_matrix[i, i] = 1.0
 
     def __getitem__(self, item):
         return self._scoring_matrix[self._alphabet[item[0]], self._alphabet[item[1]]]
