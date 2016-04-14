@@ -194,7 +194,7 @@ def print_file_header(arg, outputfile):
     outputfile.write("#    --fsextend " + str(arg.fsextend) + "\n")    
     outputfile.write("#    --aminoacidmatrix " + arg.aminoacidmatrix + "\n")  
     outputfile.write("#    --outfile " + arg.outfile + "\n")
-    outputfile.write("# Align_format: " + arg.outformat + "\n")
+    outputfile.write("#    --outformat " + arg.outformat + "\n")
     outputfile.write("# Report_file: " + arg.outfile + "\n")
     outputfile.write("########################################\n")
 

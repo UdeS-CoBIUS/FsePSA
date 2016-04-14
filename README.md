@@ -108,7 +108,7 @@ Example at the srspair format:
 #    --fsextend -1.0
 #    --aminoacidmatrix resources/BLOSUM62.txt
 #    --outfile examples/example_data.srspair
-# Align_format: srspair
+#    --outformat srspair
 # Report_file: examples/example_data.srspair
 ########################################
 
@@ -238,7 +238,7 @@ Example at fasta format:
 #    --fsextend -1.0
 #    --aminoacidmatrix resources/BLOSUM62.txt
 #    --outfile examples/example_data.aln.fasta
-# Align_format: fasta
+#    --outformat fasta
 # Report_file: examples/example_data.aln.fasta
 ########################################
 
