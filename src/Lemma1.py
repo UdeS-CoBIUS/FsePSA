@@ -23,7 +23,7 @@ def lemma1(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values = np.zeros(18)
         values[:] = -np.inf
 
-        values[0] = sub_aa[aamap[seq_a[i-2:i+1]], aamap[seq_b[j-2:j+1]]] + table_d[i-3, j-3]
+        values[0] = sub_aa[aamap[str(seq_a[i-2:i+1])], aamap[str(seq_b[j-2:j+1])]] + table_d[i-3, j-3]
         values[1] = sub_an[seq_a[i], seq_b[j]] + sub_an[seq_a[i-1], seq_b[j-1]] + table_d[i-3, j-2] + 2 * fs_open_cost
         values[2] = sub_an[seq_a[i], seq_b[j]] + sub_an[seq_a[i-2], seq_b[j-1]] + table_d[i-3, j-2] + 2 * fs_open_cost
         values[3] = sub_an[seq_a[i], seq_b[j]] + table_d[i-3, j-1] + 2 * fs_open_cost
@@ -57,7 +57,7 @@ def lemma1(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if i >= 3 and j >= 3:
-            values[0] = sub_aa[aamap[seq_a[i-2:i+1]], aamap[seq_b[j-2:j+1]]]/2 + table_df[i-3, j-3] + \
+            values[0] = sub_aa[aamap[str(seq_a[i-2:i+1])], aamap[str(seq_b[j-2:j+1])]]/2 + table_df[i-3, j-3] + \
                 fs_extension_cost + sub_an[seq_a[i], seq_b[j]]/2
 
             if (j - 1) % 3 != 0:
@@ -103,7 +103,7 @@ def lemma1(seq_a, seq_b, fs_open_cost, fs_extension_cost, sub_aa, sub_an, table_
         values[:] = -np.inf
 
         if i >= 3 and j >= 3:
-            values[0] = sub_aa[aamap[seq_a[i-2:i+1]], aamap[seq_b[j-2:j+1]]]/2 + table_df[i-3, j-3] + \
+            values[0] = sub_aa[aamap[str(seq_a[i-2:i+1])], aamap[str(seq_b[j-2:j+1])]]/2 + table_df[i-3, j-3] + \
                 fs_extension_cost + sub_an[seq_a[i], seq_b[j]]/2
 
             if (i - 1) % 3 != 0:
