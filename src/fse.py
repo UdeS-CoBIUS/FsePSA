@@ -6,7 +6,7 @@
 ``fse.py`` **module description**:
 
 This module implements Theorem1 describing the dynamic programming algorithm in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences with frameshift extension penalties. (2016).
+    * F. Bélanger, A. Rachati, A. Ouangraoua. Aligning protein-coding sequences with frameshift extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger
 
@@ -84,12 +84,13 @@ def backtrack(seq_a, seq_b):
     memories = [memory, memory_df, memory_ga, memory_gb]
     fct_vect = [d_fct, df_fct, ga_fct, gb_fct]
     ind = 0
-
+    print "debut"
     init_fct_vector()
 
     while i > 0 or j > 0:
         if i > 0 and j > 0:
             idx = memories[ind][i, j]
+            print i, j, ind, idx
             res_1, res_2, i, j, ind = fct_vect[ind][idx](seq_a, seq_b, res_1, res_2, i, j)
 
         elif i > 0:
@@ -128,6 +129,11 @@ def fse(seq_a, seq_b, arg, sub_aa, sub_an):
     memory_ga = np.zeros(table_d.shape, dtype='int')
     memory_gb = np.zeros(table_d.shape, dtype='int')
     
+    for j in xrange(1, m+1):
+        table_ga[0][j] = -np.inf
+    for i in xrange(1, n+1):
+        table_gb[i][0] = -np.inf
+        
     init_fse(seq_a, seq_b, arg.fsopen, arg.gapopen, arg.gapextend, sub_an)
     
     for i in xrange(1, n+1):
