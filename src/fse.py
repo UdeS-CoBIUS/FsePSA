@@ -84,13 +84,11 @@ def backtrack(seq_a, seq_b):
     memories = [memory, memory_df, memory_ga, memory_gb]
     fct_vect = [d_fct, df_fct, ga_fct, gb_fct]
     ind = 0
-    print "debut"
     init_fct_vector()
 
     while i > 0 or j > 0:
         if i > 0 and j > 0:
             idx = memories[ind][i, j]
-            print i, j, ind, idx
             res_1, res_2, i, j, ind = fct_vect[ind][idx](seq_a, seq_b, res_1, res_2, i, j)
 
         elif i > 0:
