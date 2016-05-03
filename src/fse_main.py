@@ -69,6 +69,7 @@ def compute_fslength(sequence1,sequence2):
             inFrameshift = False                
     return total_fsopen, total_fsextend, sequence1_, sequence2_
 
+
 def compute_alignment_composition(sequence1,sequence2):
     nb_identity = 0
     nb_gap1 = 0
@@ -95,6 +96,10 @@ def compute_alignment_composition(sequence1,sequence2):
         else:
             markup_line += "."
     return nb_identity, nb_gap1, nb_gap2, markup_line,sequence1,sequence2
+
+def count_gaps(sequence1,sequence2):
+    composition = compute_alignment_composition(sequence1,sequence2)
+    return composition[1], composition[2]
 
 def print_alignment_header(sequence1_id,sequence2_id,arg, outputfile):
     outputfile.write("\n")
@@ -127,10 +132,13 @@ def print_alignment(total_length,total_identity,total_gap,total_fsopen,total_fse
     outputfile.write("#---------------------------------------\n")
 
 def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2,outformat):
-    total_identity = total_fsopen = total_fsextend = total_gap1 = total_gap2 = 0
+    total_identity = total_gap = total_gap1 = total_gap2 = 0
     alignment = ""
     aln_srspair = ""
     aln1_fasta = aln2_fasta = ""
+
+    nb_identity,nb_gap1, nb_gap2, markup_line,sequence1,sequence2 = compute_alignment_composition(sequence1,sequence2)
+
     start = 0
     while start < len(sequence1):
         line_length = LENGTH_ALN_LINE
@@ -138,9 +146,10 @@ def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2,outformat):
             line_length = len(sequence1)-start
         subsequence1 = sequence1[start:start+line_length]
         subsequence2 = sequence2[start:start+line_length]
+        submarkup_line = markup_line[start:start+line_length]
+        
         aln1_fasta += subsequence1 + "\n"
         aln2_fasta += subsequence2 + "\n"
-        nb_identity,nb_gap1,nb_gap2,markup_line,subsequence1,subsequence2 = compute_alignment_composition(subsequence1,subsequence2)
 
         prefix1 = sequence1_id
         for i in range (len(sequence1_id),20):
@@ -154,25 +163,29 @@ def format_alignment(sequence1_id,sequence2_id,sequence1,sequence2,outformat):
         end_prefix2 = " "+ str(start-total_gap2+1) + " "
         prefix2 = prefix2[:20-len(end_prefix2)] + end_prefix2
             
-        aln_srspair +=  prefix1 + subsequence1 + "     " + str(start+line_length - total_gap1 - nb_gap1) + "\n"
+        gap1,gap2 = count_gaps(subsequence1,subsequence2)
+        total_gap1 += gap1
+        total_gap2 += gap2
+
+        aln_srspair +=  prefix1 + subsequence1 + "     " + str(start+line_length - total_gap1) + "\n"
         prefix_markup_line = ""
         for i in range (20):
             prefix_markup_line += " "
-        aln_srspair +=  prefix_markup_line + markup_line + "\n"
-        aln_srspair += prefix2 +subsequence2 + "     " + str(start+line_length - total_gap2 - nb_gap2) + "\n\n"
+        aln_srspair +=  prefix_markup_line + submarkup_line + "\n"
+        aln_srspair += prefix2 +subsequence2 + "     " + str(start+line_length - total_gap2) + "\n\n"
 
-        total_identity += nb_identity
-        total_gap1 += nb_gap1
-        total_gap2 += nb_gap2
         start += line_length
+
 
     if(outformat == "srspair"):
         alignment = aln_srspair
     if(outformat == "fasta"):
         alignment = ">" + sequence1_id + "\n" + aln1_fasta + "\n" + ">" + sequence2_id + "\n" + aln2_fasta
 
+    total_identity = nb_identity
+    total_gap = nb_gap1 + nb_gap2
     total_length = len(sequence1)
-    total_gap = total_gap1 + total_gap2
+
     return alignment,total_length,total_identity,total_gap
     
 def print_result(sequence1_id,sequence2_id,score,sequence1, sequence2, arg, outputfile):
