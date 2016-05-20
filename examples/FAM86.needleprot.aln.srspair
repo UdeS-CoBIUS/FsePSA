@@ -1,0 +1,242 @@
+########################################
+# Program: fse
+# Rundate: Wed May 18 21:02:59 2016
+# Commandline: python fse_main.py
+#    --method needleprot
+#    --datasequence examples/FAM86.fasta fasta
+#    --gapopen -11.0
+#    --gapextend -1.0
+#    --fsopen -10
+#    --fsextend -1.0
+#    --aminoacidmatrix resources/BLOSUM62.txt
+#    --outfile examples/FAM86.needleprot.aln.srspair
+#    --outformat srspair
+# Report_file: examples/FAM86.needleprot.aln.srspair
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: FAM86C1-002
+# 2: FAM86B1-001
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -11.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -10
+# FSextend_penalty: -1.0
+#
+# Length:         522
+# Identity NT:    253/522 48.5%
+# Identity AA:    408/1044 39.1%
+# Gapopen:        8/522 1.5%
+# Gaps:           90/522 17.2%
+# FSopen:         0/522 0.0%
+# FrameShift:     0/522 0.0%
+# Score: 200.0
+#
+#
+#=======================================
+
+FAM86C1-002       1 ATGGCGCCCGAGGAGAACGCGGGGAGCGAACTCTTGCTGCAGAGTTTCAA     50
+                    |||||||||||||||||||||||||.||||||||||||||||.||||..|
+FAM86B1-001       1 ATGGCGCCCGAGGAGAACGCGGGGACCGAACTCTTGCTGCAGGGTTTTGA     50
+
+FAM86C1-002      51 GCGCCGCTTCCTGGCAGCGCGCGCCCTGCGCTCCTTCCGCTGGCAGAGCT     100
+                    |||||||||||||||.|.||||.|.|||||||||||||.|||||||||||
+FAM86B1-001      51 GCGCCGCTTCCTGGCGGTGCGCACACTGCGCTCCTTCCCCTGGCAGAGCT     100
+
+FAM86C1-002     101 TAGAAGCAAAGTTAAGAGACTCATCAGATTCTGAGCTGCTGCGGGATATT     150
+                    ||||.|||||||||||||||||||||||||||||||||||||||||||||
+FAM86B1-001     101 TAGAGGCAAAGTTAAGAGACTCATCAGATTCTGAGCTGCTGCGGGATATT     150
+
+FAM86C1-002     151 TTGCAGAAG---------CACGAGGCTGTCCACACAGAGCCTTTGGATGA     191
+                    |||||||||         ||....|........|...|.||...|...|.
+FAM86B1-001     151 TTGCAGAAGACTGTGAGGCATCCTGTGTGTGTGAAGCACCCGCCGTCAGT     200
+
+FAM86C1-002     192 GCTGTACGAGGTGCTGGTGGAGACCCTGATGGCCAAGGAGTCCACCCAGG     241
+                    ...|||.|....|....|.....|.....|...|||..|||||.|....|
+FAM86B1-001     201 CAAGTATGCCTGGTGCTTTCTCTCAGAACTCATCAAAAAGTCCTCAGGAG     250
+
+FAM86C1-002     242 GCCACCGGAGCTATTTGCTGACGTGCTGTATTGCCCAGAAGCCATCGTGT     291
+                    ||                  .|...|....|..||.|||...||.|....
+FAM86B1-001     251 GC------------------TCAGTCACACTCTCCAAGAGCACAGCCATC     282
+
+FAM86C1-002     292 CGCTGGTCGGGGTCCTGCGGA------GGCTGGCTGCCTGCCGGGAGCAC     335
+                    ..||.....||..||...||.      ...|||               ..
+FAM86B1-001     283 ATCTCCCACGGTACCACAGGCCTGGTCACATGG---------------GA     317
+
+FAM86C1-002     336 CAGCGGGCTCCTCAATTCTACATGGCCCTTA------CCGTCTGCAACCC     379
+                    ...||..|||..|..|.|...||||.||.|.      |||.|.||...|.
+FAM86B1-001     318 TGCCGCCCTCTACCTTGCAGAATGGGCCATCGAGAACCCGGCAGCCTTCA     367
+
+FAM86C1-002     380 AGAGATGTGCCAGCTGTTCACCACCGAGCTAT------GCTGGACTGGGA     423
+                    ..|...|..........|..||....|||.||      |||||.|.|||.
+FAM86B1-001     368 TTAACAGACGTGCTGTATTGCCCAGAAGCCATCGTGTCGCTGGTCGGGGT     417
+
+FAM86C1-002     424 TCAGATGGGAAGCGGAAGCTCATCATGACCAGAAACTGTTTCCCTACAGA     473
+                    .|.                     ...........|||..|.||...||.
+FAM86B1-001     418 CCT---------------------GCAGAGGCTGGCTGCCTGCCGGGAGC     446
+
+FAM86C1-002     474 GAGCACTTGGAGATGGCAAAGC     495
+                    .....|..|.         ..|
+FAM86B1-001     447 ACAAGCGGGC---------TCC     459
+
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: FAM86C1-002
+# 2: FAM86B2-202
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -11.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -10
+# FSextend_penalty: -1.0
+#
+# Length:         555
+# Identity NT:    130/555 23.4%
+# Identity AA:    174/1110 15.7%
+# Gapopen:        9/555 1.6%
+# Gaps:           198/555 35.7%
+# FSopen:         0/555 0.0%
+# FrameShift:     0/555 0.0%
+# Score: -69.0
+#
+#
+#=======================================
+
+FAM86C1-002       1 ATGGCG---------CCCGAGGAGAACGCGGGGAGCGAACTCTTGCTGCA     41
+                    |||.|.         .|..||.|.....|....||....|....|...||
+FAM86B2-202       1 ATGCCTGGTGCTTTCTCTCAGAACTCATCAAAAAGTCCTCAGGAGGCTCA     50
+
+FAM86C1-002      42 GAGTTTCAAGCGCCGCTTCCTGGCAGCGCGCGCCCTGCGCTCCTTCCGCT     91
+                    |.....|...|...|....|.|.||.|.....||..|....|......||
+FAM86B2-202      51 GTCACACTCTCCAAGAGCACAGCCATCATCTCCCACGGTACCACAGGCCT     100
+
+FAM86C1-002      92 GG---------------------------CAGAGCTTAGAAGCAAAGTTA     114
+                    ||                           ||||.......|.|.|.....
+FAM86B2-202     101 GGTCACATGGGATGCCGCCCTCTACCTTGCAGAATGGGCCATCGAGAACC     150
+
+FAM86C1-002     115 AGAGACTCATCAGATTCTGAGCTGCTGCGGGATATTTTGCAGAAGCACGA     164
+                    .|..|..|.|||            .|....||..|..||.|....|..||
+FAM86B2-202     151 CGGCAGCCTTCA------------TTAACAGACGTGCTGTATTGCCCAGA     188
+
+FAM86C1-002     165 GGCTGTCCACACAGAGCCTTTGGATGAGCTGTACGAGGTGCTGGTGGAGA     214
+                    .||..||....|.               |||..||.|||.|||..|..|.
+FAM86B2-202     189 AGCCATCGTGTCG---------------CTGGTCGGGGTCCTGCAGAGGC     223
+
+FAM86C1-002     215 CCCTGATGGCCAAGGAGTCCACCCAGGGCCACCGGAGCTATTTGCTGACG     264
+                    ..........|..||||..||..|.||..|....|..|||..||   .|.
+FAM86B2-202     224 TGGCTGCCTGCCGGGAGCACAAGCGGGCTCCTGAGGTCTACGTG---GCC     270
+
+FAM86C1-002     265 TGCTGTATTGCCCAGAAGCCATCGTGTCGCTGGTCGGGGTCCTGCGGAGG     314
+                    |......|...|.|........|.||.|..                    
+FAM86B2-202     271 TTTACCGTCCGCAACCCAGAGACATGCCAG--------------------     300
+
+FAM86C1-002     315 CTGGCTGCCTGCCGGGAGCACCAGCGGGCTCCTCAATTCTACATGGCCCT     364
+                                                   ||.....|.||.       
+FAM86B2-202     301 -------------------------------CTGTTCACCACC-------     312
+
+FAM86C1-002     365 TACCGTCTGCAACCCAGAGATGTGCCAGCTGTTCACCACCGAGCTATGCT     414
+                                                                      
+FAM86B2-202     313 --------------------------------------------------     312
+
+FAM86C1-002     415 GGACTGGGATCAGATGGGAAGCGG---------AAGCTCATCATGACCAG     455
+                    |..||.||....|||||||...|.         .|............|..
+FAM86B2-202     313 GAGCTAGGCCGGGATGGGATCAGATGGGAAGCGGAAGCTCATCATGACCA     362
+
+FAM86C1-002     456 AAACTGTTTCCCT---------------ACAGAGAGCACTTGGAGATGGC     490
+                    .||....||.||.               .....|...|....||......
+FAM86B2-202     363 GAAACTGTTTCCCTATGGAGAGCACTTGGAGATGGCAATGCTGAACCTCA     412
+
+FAM86C1-002     491 AAAGC     495
+                    .|...
+FAM86B2-202     413 CACTG     417
+
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: FAM86B1-001
+# 2: FAM86B2-202
+# Matrix: resources/BLOSUM62.txt
+# GapOpen_penalty: -11.0
+# GapExtend_penalty: -1.0
+# FSopen_penalty: -10
+# FSextend_penalty: -1.0
+#
+# Length:         522
+# Identity NT:    136/522 26.1%
+# Identity AA:    144/1044 13.8%
+# Gapopen:        10/522 1.9%
+# Gaps:           168/522 32.2%
+# FSopen:         0/522 0.0%
+# FrameShift:     0/522 0.0%
+# Score: -70.0
+#
+#
+#=======================================
+
+FAM86B1-001       1 ATG-----------------------------------------------     3
+                    |||                                               
+FAM86B2-202       1 ATGCCTGGTGCTTTCTCTCAGAACTCATCAAAAAGTCCTCAGGAGGCTCA     50
+
+FAM86B1-001       4 -------GCGCCCGAGGAGAACGCGGGGACCGAACTCTTGCTGCAGGGTT     46
+                           .|.||....|...|..|.....|........|.|..||||..|
+FAM86B2-202      51 GTCACACTCTCCAAGAGCACAGCCATCATCTCCCACGGTACCACAGGCCT     100
+
+FAM86B1-001      47 TTGAGCGCCGCTTCCTGGCGGTGCGCACACTGCGCTCCTTCCCCTGGCAG     96
+                    .....|...|.   .||.||......||..|||........||.|.|...
+FAM86B2-202     101 GGTCACATGGG---ATGCCGCCCTCTACCTTGCAGAATGGGCCATCGAGA     147
+
+FAM86B1-001      97 AGCTTAGAGGCAAAGTTAAGAGACTCATCAGATTCT---GAGCTGCTGCG     143
+                    |.|....||.|....||||.||||.......|||..   ||.....|...
+FAM86B2-202     148 ACCCGGCAGCCTTCATTAACAGACGTGCTGTATTGCCCAGAAGCCATCGT     197
+
+FAM86B1-001     144 GGATATTTTGCAGAAGACTGTGAGGCATCCTGTGTGTGTGAAGCACCCG-     192
+                    |....|..|...|........|||||...|||..||...|.|||||..| 
+FAM86B2-202     198 GTCGCTGGTCGGGGTCCTGCAGAGGCTGGCTGCCTGCCGGGAGCACAAGC     247
+
+FAM86B1-001     193 -----CCGTCAGTCAAGTATGCCTGGTGCTTTCTCTCAGAACTCATCAAA     237
+                         ||....|||.|....||||....|.|.|.|.....|         
+FAM86B2-202     248 GGGCTCCTGAGGTCTACGTGGCCTTTACCGTCCGCAACCCA---------     288
+
+FAM86B1-001     238 AAGTCCTCAGGAGGCTCAGTCACACTCTCCAAGAGCACAGCCATCATCTC     287
+                                      |..|||..|.....|..|||..||....|.  
+FAM86B2-202     289 ------------------GAGACATGCCAGCTGTTCACCACCGAGCTA--     318
+
+FAM86B1-001     288 CCACGGTACCACAGGCCTGGTCACATGGGATGCCGCCCTCTACCTTGCAG     337
+                        ||.......||.   .|||.||||||.||.|......|.       
+FAM86B2-202     319 ----GGCCGGGATGGG---ATCAGATGGGAAGCGGAAGCTCAT-------     354
+
+FAM86B1-001     338 AATGGGCCATCGAGAACCCGGCAGCCTTCATTAACAGACGTGCTGTATTG     387
+                                                    .|....|......|.||.
+FAM86B2-202     355 --------------------------------CATGACCAGAAACTGTTT     372
+
+FAM86B1-001     388 CCCAGAAGCCATCGTGTCGCTGGTCGGGGTCCTGCAGAGGCTGGCTGCCT     437
+                    |||....|..|.|...|.                  |||...|.....||
+FAM86B2-202     373 CCCTATGGAGAGCACTTG------------------GAGATGGCAATGCT     404
+
+FAM86B1-001     438 GCCGGGAGCACAAGCGGGCTCC     459
+                    |         .|..........
+FAM86B2-202     405 G---------AACCTCACACTG     417
+
+#---------------------------------------
+#---------------------------------------
+
+#=======================================
+#
+# Score_matrix
+#
+#=======================================
+
+FAM86C1-002	FAM86B1-001	FAM86B2-202	
+	200.0	-69.0	
+		-70.0	
+			
+#---------------------------------------
+#---------------------------------------
