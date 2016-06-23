@@ -35,6 +35,10 @@ def init_fse(seq_a, seq_b, fsopen, gap_open_cost, gap_extension_cost, sub_an):
     n = len(seq_a)
     m = len(seq_b)
 
+    table_d[0, 0] = 0
+    table_ga[0, 0] = -np.inf
+    table_gb[0, 0] = -np.inf
+
     for i in xrange(1, n):
         table_d[i, 0] = gap(np.floor(i/3), gap_open_cost, gap_extension_cost)
         table_df[i, 0] = table_d[i, 0]
@@ -44,7 +48,7 @@ def init_fse(seq_a, seq_b, fsopen, gap_open_cost, gap_extension_cost, sub_an):
         elif i % 3 == 2:
             table_df[i, 0] += sub_an[seq_a[i+1], seq_b[1]]/2 + fsopen
 
-        table_ga[i, 0] = -np.inf
+        table_gb[i, 0] = -np.inf
         
     for j in xrange(1, m):
         table_d[0, j] = gap(np.floor(j/3), gap_open_cost, gap_extension_cost)
@@ -55,7 +59,7 @@ def init_fse(seq_a, seq_b, fsopen, gap_open_cost, gap_extension_cost, sub_an):
         elif j % 3 == 2:
             table_df[0, j] += sub_an[seq_a[1], seq_b[1+j]]/2 + fsopen
 
-        table_gb[0, j] = -np.inf
+        table_ga[0, j] = -np.inf
 
 def init_fct_vector():
     global d_fct
@@ -127,10 +131,10 @@ def fse(seq_a, seq_b, arg, sub_aa, sub_an):
     memory_ga = np.zeros(table_d.shape, dtype='int')
     memory_gb = np.zeros(table_d.shape, dtype='int')
     
-    for j in xrange(1, m+1):
-        table_ga[0][j] = -np.inf
-    for i in xrange(1, n+1):
-        table_gb[i][0] = -np.inf
+    # for j in xrange(1, m+1):
+    #     table_ga[0][j] = -np.inf
+    # for i in xrange(1, n+1):
+    #     table_gb[i][0] = -np.inf
         
     init_fse(seq_a, seq_b, arg.fsopen, arg.gapopen, arg.gapextend, sub_an)
     
