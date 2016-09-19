@@ -6,11 +6,11 @@
 ``LemmaG.py`` **module description**:
 
 This module implements affine gap costs usage in the algorithm described in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences with frameshift extension penalties. (2016).
+    * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016).
 
 Affine gap costs are handled by adding two dynamic programming matrices GA and GB.
 
-.. moduleauthor:: Aïda Ouangraoua
+.. moduleauthor:: Safa Jammali and Aïda Ouangraoua
 
 February 2016
 
