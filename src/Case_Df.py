@@ -6,7 +6,7 @@
 ``Case_Df.py`` **module description**:
 
 This module implements the backtracking steps for Lemma2 used to fill dynamic programming table Df of the algorithm described in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences with frameshift extension penalties. (2016).
+    * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger
 
