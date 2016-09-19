@@ -6,7 +6,7 @@
 ``Case_D.py`` **module description**:
 
 This module implements the backtracking steps for Lemma1 used to fill dynamic programming table D of the algorithm described in manuscript:
-    * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016).
+    * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016.
 
 .. moduleauthor:: François Bélanger
 
