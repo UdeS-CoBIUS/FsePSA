@@ -6,7 +6,8 @@
 ``fse.py`` **module description**:
 
 This module implements Theorem1 describing the dynamic programming algorithm in manuscript:
-    * F. Bélanger, A. Rachati, A. Ouangraoua. Aligning protein-coding sequences with frameshift extension penalties. (2016).
+    * S. Jammali et al. Aligning protein-coding sequences with frameshift 
+    extension penalties. (2016).
 
 .. moduleauthor:: François Bélanger
 
