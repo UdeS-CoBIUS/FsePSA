@@ -9,7 +9,7 @@ This module implements Lemma1 used to fill dynamic programming table D
 of the algorithm described in manuscript:
     * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016).
 
-.. moduleauthor:: François Bélanger
+.. moduleauthor:: François Bélanger 
 
 February 2016
 
