@@ -6,9 +6,9 @@
 ``Case_G.py`` **module description**:
 
 This module implements the backtracking steps for dynamic programming tables GA and GB Lemma2 used to handle affine gap costs in manuscript:
-    * F. Bélanger, S. Jammali, A. Rachati, A. Ouangraoua. Aligning coding sequences with frameshift extension penalties. (2016).
+    * S. Jammali et al. Aligning coding sequences with frameshift extension penalties. (2016).
 
-.. moduleauthor:: Aïda Ouangraoua
+.. moduleauthor:: Safa Jammali and Aïda Ouangraoua
 
 February 2016
 
